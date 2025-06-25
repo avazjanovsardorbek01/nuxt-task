@@ -16,5 +16,6 @@ onMounted(async () => {
     "https://api.los-bio.ru/info/group/advantage"
   );
   advantages.value = data.value || [];
+  console.log(data.value, "advantages");
 });
 </script>
