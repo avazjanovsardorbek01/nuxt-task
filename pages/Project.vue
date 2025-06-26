@@ -326,6 +326,8 @@ onMounted(async () => {
 
   .project-card {
     height: auto;
+    max-width: 300px;
+    margin-left: -120px;
   }
 
   .project-description {

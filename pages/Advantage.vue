@@ -282,8 +282,9 @@ if (!error.value && Array.isArray(data.value)) {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-left: -20px;
+    margin-left: -40px;
     padding: 30px 20px;
+    max-width: auto;
   }
 
   .icon-wrap {
@@ -301,6 +302,8 @@ if (!error.value && Array.isArray(data.value)) {
   .section-title {
     font-size: 2rem;
     margin-bottom: 50px;
+    max-width: 20px;
+    text-align: center;
   }
 }
 
@@ -325,6 +328,12 @@ if (!error.value && Array.isArray(data.value)) {
   .section-title {
     font-size: 1.6rem;
     margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 320px) {
+  .advantage-card {
+    padding: 25px 15px;
   }
 }
 </style>

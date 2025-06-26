@@ -1,22 +1,24 @@
 <template>
-  <div class="app">
-    <Navbar />
-    <div class="main-content">
-      <div class="container">
-        <ClientOnly>
-          <Slider />
-        </ClientOnly>
+  <div class="container">
+    <div class="app">
+      <Navbar />
+      <div class="main-content">
+        <div class="container">
+          <ClientOnly>
+            <Slider />
+          </ClientOnly>
 
-        <ClientOnly>
-          <AdvantageList />
-        </ClientOnly>
+          <ClientOnly>
+            <AdvantageList />
+          </ClientOnly>
 
-        <ClientOnly>
-          <ProjectList />
-        </ClientOnly>
+          <ClientOnly>
+            <ProjectList />
+          </ClientOnly>
+        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
 </template>
 
@@ -37,7 +39,7 @@ body {
   font-family: "Gilroy", sans-serif;
 }
 
-.app {
+/* .app {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -45,12 +47,12 @@ body {
 
 .main-content {
   flex: 1;
-}
+} */
 
 .container {
   max-width: 1300px;
   margin: 0 auto;
-  padding: 0 30px;
-  width: 100%;
+  padding: 0 20px;
+  /* width: auto; */
 }
 </style>

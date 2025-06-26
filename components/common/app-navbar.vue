@@ -105,7 +105,7 @@
     </nav>
 
     <!-- Мобильное меню -->
-    <transition name="fade">
+    <!-- <transition name="fade">
       <div
         v-if="menuOpen"
         class="mobile-menu-overlay"
@@ -149,7 +149,7 @@
           </li>
         </ul>
       </div>
-    </transition>
+    </transition> -->
   </div>
 </template>
 
@@ -184,6 +184,7 @@ onBeforeUnmount(() => {
   position: relative;
   z-index: 1000;
   font-family: "Gilroy-Light";
+  background: red;
 }
 
 .top-bar {
@@ -576,54 +577,5 @@ onBeforeUnmount(() => {
 .slide-enter-from,
 .slide-leave-to {
   transform: translateX(100%);
-}
-
-/* Адаптивность */
-@media (max-width: 991px) {
-  .top-bar .contact-info {
-    justify-content: center;
-    gap: 20px;
-  }
-
-  .contact-item .text {
-    display: none;
-  }
-
-  .callback .text {
-    display: inline;
-  }
-  .contact-item .icon,
-  .callback .icon {
-    display: none;
-  }
-}
-
-@media (max-width: 768px) {
-  .main-nav .container {
-    height: 70px;
-  }
-
-  .main-nav .logo-img {
-    height: 40px;
-  }
-}
-
-@media (max-width: 480px) {
-  .top-bar {
-    padding: 8px 0;
-  }
-
-  .main-nav .container {
-    height: 60px;
-  }
-
-  .mobile-menu {
-    width: 280px;
-    padding: 20px;
-  }
-  .contact-item .icon,
-  .callback .icon {
-    display: none;
-  }
 }
 </style>

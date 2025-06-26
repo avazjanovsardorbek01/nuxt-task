@@ -122,7 +122,8 @@ const onSlideChange = (swiper: any) => {
 
 .my-swiper {
   width: 100%;
-  height: 650px;
+  height: auto;
+  min-height: 620px;
 }
 
 .slide-content {
@@ -430,8 +431,13 @@ const onSlideChange = (swiper: any) => {
 }
 
 @media (max-width: 768px) {
+  .slider-section {
+    background: red;
+  }
   .container {
     padding: 0 20px;
+    max-width: 300px;
+    background: red;
   }
 
   .catalog-btn {
@@ -442,6 +448,8 @@ const onSlideChange = (swiper: any) => {
   .slide-content {
     gap: 20px;
     height: 620px;
+    background: red;
+    max-width: 220px;
   }
 
   .text-container h2 {
