@@ -2,6 +2,7 @@
   <section class="advantages-section">
     <div class="container">
       <h2 class="section-title" v-animate="'fadeInDown'">Наши преимущества</h2>
+
       <div class="advantages-grid">
         <div
           v-for="(advantage, idx) in advantages"
@@ -16,11 +17,13 @@
           <div v-if="advantage.icon" class="icon-wrap floating">
             <img :src="advantage.icon" alt="icon" />
           </div>
+
           <div class="advantage-text-wrap">
             <h3 class="advantage-title">{{ advantage.title }}</h3>
             <p class="advantage-text">{{ advantage.description }}</p>
           </div>
-          <div class="shine"></div>
+
+          <div class="shine" />
         </div>
       </div>
     </div>
@@ -115,27 +118,30 @@ if (!error.value && Array.isArray(data.value)) {
 </script>
 
 <style scoped>
-@import url("https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css");
-
 .advantages-section {
-  background: #02041f;
+  width: 100%;
+  background-color: #02041f;
   padding: 100px 0;
 }
 
 .container {
   max-width: 1220px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .section-title {
   font-size: 2.8rem;
   color: white;
-  text-align: start;
-  margin-bottom: 80px;
   font-weight: 400;
-  position: relative;
+  margin-bottom: 80px;
+  text-align: start;
   opacity: 0;
+  transition: 0.3s;
+
+  @media (max-width: 768px) {
+    text-align: center;
+  }
 }
 
 .advantages-grid {
@@ -146,18 +152,18 @@ if (!error.value && Array.isArray(data.value)) {
 }
 
 .advantage-card {
-  background: rgba(12, 19, 28, 0.7);
-  border-radius: 19px;
-  width: 569px;
-  height: 245px;
   display: flex;
   align-items: center;
   gap: 25px;
-  padding: 30px;
-  transition: all 0.5s ease;
-  position: relative;
-  overflow: hidden;
+  background: rgba(12, 19, 28, 0.7);
   border: 2px solid rgba(255, 255, 255, 0.1);
+  border-radius: 19px;
+  padding: 30px;
+  max-width: 569px;
+  width: 100%;
+  transition: 0.5s ease;
+  overflow: hidden;
+  position: relative;
   opacity: 0;
   transform: translateY(20px);
 }
@@ -180,7 +186,7 @@ if (!error.value && Array.isArray(data.value)) {
   height: 100%;
   object-fit: contain;
   filter: drop-shadow(0 0 10px rgba(0, 123, 255, 0.5));
-  transition: all 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .floating {
@@ -206,11 +212,10 @@ if (!error.value && Array.isArray(data.value)) {
   font-size: 1.5rem;
   margin-bottom: 15px;
   text-transform: uppercase;
-  color: white;
 }
 
 .advantage-text {
-  font-family: "Gilroy-Light";
+  font-family: "Gilroy-Light", sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
   color: #ccc;
@@ -235,30 +240,17 @@ if (!error.value && Array.isArray(data.value)) {
   left: 100%;
 }
 
+/* Responsive */
+
 @media (max-width: 1200px) {
   .advantages-grid {
     grid-template-columns: 1fr;
+    gap: 30px;
   }
 
-  .advantage-card {
-    width: 100%;
-    max-width: 600px;
-    height: auto;
-    flex-direction: column;
-    text-align: center;
-    padding: 40px 30px;
-  }
-
-  .icon-wrap {
-    margin-bottom: 25px;
-  }
-}
-
-@media (max-width: 768px) {
   .section-title {
-    font-size: 2.2rem;
-    margin-bottom: 50px;
-    text-align: center;
+    font-size: 2.4rem;
+    margin-bottom: 60px;
   }
 
   .advantage-title {
@@ -267,6 +259,72 @@ if (!error.value && Array.isArray(data.value)) {
 
   .advantage-text {
     font-size: 1rem;
+  }
+}
+
+@media (max-width: 991px) {
+  .advantage-card {
+    flex-direction: row;
+    padding: 25px;
+  }
+
+  .section-title {
+    font-size: 2.2rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .advantage-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: -20px;
+    padding: 30px 20px;
+  }
+
+  .icon-wrap {
+    margin-bottom: 20px;
+  }
+
+  .advantage-title {
+    font-size: 1.2rem;
+  }
+
+  .advantage-text {
+    font-size: 0.95rem;
+  }
+
+  .section-title {
+    font-size: 2rem;
+    margin-bottom: 50px;
+  }
+}
+
+@media (max-width: 375px) {
+  .advantage-card {
+    padding: 25px 15px;
+  }
+
+  .icon-wrap {
+    width: 60px;
+    height: 60px;
+  }
+
+  .advantage-title {
+    font-size: 1.1rem;
+  }
+
+  .advantage-text {
+    font-size: 0.9rem;
+  }
+
+  .section-title {
+    font-size: 1.6rem;
+    margin-bottom: 40px;
   }
 }
 </style>

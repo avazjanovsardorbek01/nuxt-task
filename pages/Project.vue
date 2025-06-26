@@ -1,5 +1,5 @@
 <template>
-  <section class="projects-section">
+  <section class="projects-section" id="">
     <div class="container">
       <div class="projects-header">
         <h2 class="section-title">Наши проекты</h2>
@@ -108,13 +108,15 @@ onMounted(async () => {
 
 <style scoped>
 .projects-section {
+  width: 100%;
+  background-color: #02041f;
   padding: 100px 0;
 }
 
 .container {
   max-width: 1240px;
   margin: 0 auto;
-  padding: 0 20px;
+  padding: 0 30px;
 }
 
 .projects-header {
@@ -125,26 +127,23 @@ onMounted(async () => {
 }
 
 .section-title {
-  font-size: 40px;
+  font-size: 2.8rem;
   font-weight: 100;
   color: #ffffff;
   font-family: "Gilroy-Light", sans-serif;
-  position: relative;
 }
 
 .view-all-button {
   background-color: transparent;
   color: #00a3e0;
-  font-size: 16px;
+  font-size: 1rem;
   font-weight: 400;
   border: 1px solid #00a3e0;
   padding: 10px 20px;
   border-radius: 8px;
   cursor: pointer;
   font-family: "Gilroy-Light", sans-serif;
-  transition:
-    background-color 0.3s,
-    color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .view-all-button:hover {
@@ -163,14 +162,14 @@ onMounted(async () => {
   background-color: #0d0f1c;
   border-radius: 19px;
   overflow: hidden;
-  transition: all 0.3s ease;
+  transition: 0.3s ease;
   cursor: pointer;
   border: 1px solid #1e2130;
-  width: 377px;
+  width: 100%;
+  max-width: 377px;
   height: 497px;
   display: flex;
   flex-direction: column;
-  position: relative;
   font-family: "Gilroy-Light", sans-serif;
 }
 
@@ -183,10 +182,10 @@ onMounted(async () => {
 .project-image-wrapper {
   width: calc(100% - 30px);
   height: 220px;
+  margin: 15px auto 0;
+  border-radius: 8px;
   overflow: hidden;
   position: relative;
-  margin: 15px 15px 0 15px;
-  border-radius: 8px;
 }
 
 .project-image {
@@ -211,21 +210,20 @@ onMounted(async () => {
 
 .project-content {
   padding: 20px 25px 25px;
-  flex-grow: 1;
   display: flex;
   flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-name {
-  font-size: 22px;
-  font-weight: 200;
+  font-size: 1.3rem;
+  font-weight: 300;
   color: #ffffff;
   margin-bottom: 15px;
-  font-family: "Gilroy-Light", sans-serif;
 }
 
 .project-description {
-  font-size: 14px;
+  font-size: 0.9rem;
   line-height: 1.6;
   color: #b0b2c3;
   margin-top: 15px;
@@ -233,14 +231,12 @@ onMounted(async () => {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
-  font-family: "Gilroy-Light", sans-serif;
 }
 
 .project-info-row {
   display: flex;
   margin-top: auto;
-  font-size: 14px;
-  font-family: "Gilroy-Light", sans-serif;
+  font-size: 0.9rem;
 }
 
 .info-label {
@@ -248,36 +244,56 @@ onMounted(async () => {
   font-weight: 500;
   min-width: 70px;
   margin-right: 10px;
-  font-family: "Gilroy-Light", sans-serif;
 }
 
 .info-value {
   color: #b0b2c3;
   flex-grow: 1;
-  font-family: "Gilroy-Light", sans-serif;
 }
 
-@media (max-width: 992px) {
-  .projects-grid {
-    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+/* Адаптивность */
+
+@media (max-width: 1200px) {
+  .section-title {
+    font-size: 2.4rem;
+  }
+
+  .view-all-button {
+    font-size: 0.95rem;
+    padding: 8px 18px;
+  }
+
+  .project-name {
+    font-size: 1.2rem;
+  }
+
+  .project-description {
+    font-size: 0.85rem;
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 991px) {
   .projects-header {
     flex-direction: column;
     align-items: flex-start;
     gap: 16px;
   }
+  .view-all-button {
+    margin-right: -122px;
+  }
 
   .projects-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 24px;
   }
 
   .project-card {
-    width: 100%;
-    max-width: 377px;
+    max-width: 100%;
     height: auto;
+  }
+
+  .project-image-wrapper {
+    height: 200px;
   }
 
   .project-info-row {
@@ -286,6 +302,57 @@ onMounted(async () => {
 
   .info-label {
     margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 20px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .view-all-button {
+    font-size: 0.9rem;
+    padding: 8px 16px;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  .project-card {
+    height: auto;
+  }
+
+  .project-description {
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 375px) {
+  .section-title {
+    font-size: 1.6rem;
+  }
+
+  .view-all-button {
+    font-size: 0.85rem;
+    padding: 6px 14px;
+  }
+
+  .project-image-wrapper {
+    height: 180px;
+  }
+
+  .project-description {
+    font-size: 0.8rem;
+  }
+
+  .project-name {
+    font-size: 1.1rem;
   }
 }
 </style>
