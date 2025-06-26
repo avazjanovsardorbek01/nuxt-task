@@ -62,7 +62,7 @@ let swiperInstance: any = null;
 
 onMounted(async () => {
   try {
-    const { data, error } = await useFetch(
+    const { data, error } = await useFetch<{ value: string }[]>(
       "https://api.los-bio.ru/info/group/slide"
     );
 
@@ -431,13 +431,9 @@ const onSlideChange = (swiper: any) => {
 }
 
 @media (max-width: 768px) {
-  .slider-section {
-    background: red;
-  }
   .container {
     padding: 0 20px;
     max-width: 300px;
-    background: red;
   }
 
   .catalog-btn {
@@ -447,13 +443,12 @@ const onSlideChange = (swiper: any) => {
 
   .slide-content {
     gap: 20px;
-    height: 620px;
-    background: red;
-    max-width: 220px;
+    height: 640px;
+    max-width: 264px;
   }
 
   .text-container h2 {
-    font-size: 1.6rem;
+    font-size: 1.3rem;
   }
 
   .text-container p {
@@ -480,7 +475,7 @@ const onSlideChange = (swiper: any) => {
   }
 
   .slide-image {
-    max-height: 250px;
+    max-height: 260px;
   }
 }
 </style>

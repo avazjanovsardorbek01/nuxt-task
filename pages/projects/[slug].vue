@@ -131,22 +131,47 @@
 import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useRoute } from "vue-router";
 
+// Типы
+interface ProjectPhoto {
+  name: string;
+}
+
+interface DescriptionBlock {
+  type: string;
+  data: {
+    text?: string;
+    items?: string[];
+  };
+}
+
+interface Project {
+  title: string;
+  works: string;
+  equipment: string;
+  customer: string;
+  description: string | { blocks: DescriptionBlock[] };
+  photos: ProjectPhoto[];
+}
+
+// Переменные
 const route = useRoute();
-const project = ref(null);
+const project = ref<Project | null>(null);
 const modalVisible = ref(false);
 const currentPhotoIndex = ref(0);
 
-const getProjectPhotoUrl = (photo) => {
+// Получить URL фото
+const getProjectPhotoUrl = (photo: ProjectPhoto) => {
   if (!photo || !photo.name) return "";
   return photo.name.startsWith("http")
     ? photo.name
     : `https://api.los-bio.ru/files/projects/${photo.name}`;
 };
 
-const formatDescription = (description) => {
+// Форматирование description
+const formatDescription = (description: Project["description"]) => {
   if (!description) return "";
   if (typeof description === "string") return description;
-  if (description.blocks) {
+  if ("blocks" in description) {
     return description.blocks
       .map((block) => {
         switch (block.type) {
@@ -155,9 +180,7 @@ const formatDescription = (description) => {
           case "header":
             return `<h4>${block.data.text}</h4>`;
           case "list":
-            return `<ul>${block.data.items
-              .map((item) => `<li>${item}</li>`)
-              .join("")}</ul>`;
+            return `<ul>${block.data.items?.map((item) => `<li>${item}</li>`).join("")}</ul>`;
           default:
             return "";
         }
@@ -167,29 +190,38 @@ const formatDescription = (description) => {
   return JSON.stringify(description);
 };
 
-const openModal = (index) => {
+// Открытие модалки
+const openModal = (index: number) => {
   currentPhotoIndex.value = index;
   modalVisible.value = true;
   document.body.style.overflow = "hidden";
 };
 
+// Закрытие модалки
 const closeModal = () => {
   modalVisible.value = false;
   document.body.style.overflow = "auto";
 };
 
+// Предыдущее фото
 const prevPhoto = () => {
-  currentPhotoIndex.value =
-    (currentPhotoIndex.value - 1 + project.value.photos.length) %
-    project.value.photos.length;
+  if (project.value) {
+    currentPhotoIndex.value =
+      (currentPhotoIndex.value - 1 + project.value.photos.length) %
+      project.value.photos.length;
+  }
 };
 
+// Следующее фото
 const nextPhoto = () => {
-  currentPhotoIndex.value =
-    (currentPhotoIndex.value + 1) % project.value.photos.length;
+  if (project.value) {
+    currentPhotoIndex.value =
+      (currentPhotoIndex.value + 1) % project.value.photos.length;
+  }
 };
 
-const handleKeyDown = (e) => {
+// Навигация по клавишам
+const handleKeyDown = (e: KeyboardEvent) => {
   if (!modalVisible.value) return;
 
   if (e.key === "Escape") {
@@ -201,6 +233,7 @@ const handleKeyDown = (e) => {
   }
 };
 
+// Получение проекта при загрузке
 onMounted(async () => {
   try {
     const res = await fetch(
@@ -215,6 +248,7 @@ onMounted(async () => {
   window.addEventListener("keydown", handleKeyDown);
 });
 
+// Очистка
 onBeforeUnmount(() => {
   window.removeEventListener("keydown", handleKeyDown);
   document.body.style.overflow = "auto";
@@ -236,7 +270,6 @@ onBeforeUnmount(() => {
   padding: 0 20px;
 }
 
-/* Breadcrumbs */
 .breadcrumbs {
   padding: 20px 0;
   margin-bottom: 30px;
@@ -508,20 +541,16 @@ onBeforeUnmount(() => {
   opacity: 0;
 }
 
-/* >= 1200px (default - katta ekran) */
-/* Bu holatda sizning `.container { max-width: 1440px }` ishlaydi */
-
-/* >= 991px va < 1200px */
 @media (max-width: 1200px) {
   .project-layout {
     flex-direction: column;
-    align-items: center; /* Yangi */
+    align-items: center;
   }
 
   .project-info-card {
     width: 100%;
-    max-width: 691px; /* Asl o‘lchamni saqlash uchun */
-    margin: 0 auto; /* Markazga hizalash */
+    max-width: 691px;
+    margin: 0 auto;
     min-height: auto;
   }
 
@@ -530,14 +559,13 @@ onBeforeUnmount(() => {
   }
 }
 
-/* >= 768px va < 991px */
 @media (max-width: 990px) and (min-width: 768px) {
   .project-info-card {
     padding: 24px;
   }
 
   .title {
-    font-size: 2rem;
+    font-size: 1rem;
   }
 
   .project-gallery {
@@ -545,7 +573,6 @@ onBeforeUnmount(() => {
   }
 }
 
-/* >= 375px va < 768px */
 @media (max-width: 767px) and (min-width: 375px) {
   .project-layout {
     flex-direction: column;
@@ -553,7 +580,8 @@ onBeforeUnmount(() => {
   }
 
   .project-info-card {
-    padding: 20px;
+    padding: 10px;
+    margin: 1px;
   }
 
   .title {
@@ -578,7 +606,6 @@ onBeforeUnmount(() => {
   }
 }
 
-/* < 375px — max siqilgan */
 @media (max-width: 374px) {
   .project-info-card {
     padding: 16px;

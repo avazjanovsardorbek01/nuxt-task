@@ -58,40 +58,71 @@
 <script setup lang="ts">
 import { ref, onMounted } from "vue";
 import { useRouter } from "vue-router";
-// import AllProjects from "../components/AllProjects.vue";
-const router = useRouter();
-const projects = ref([]);
 
-const getFirstProjectImage = (project) => {
-  if (!project || !project.photos || project.photos.length === 0) return null;
+// Типизация проекта
+interface ProjectPhoto {
+  name: string;
+}
+
+interface DescriptionBlock {
+  type: string;
+  data: {
+    text?: string;
+    items?: string[];
+  };
+}
+
+interface Project {
+  id: number;
+  title: string;
+  slug: string;
+  photos: ProjectPhoto[];
+  short_description?: {
+    blocks?: DescriptionBlock[];
+  };
+  works: string;
+}
+
+// Ссылки и данные
+const router = useRouter();
+const projects = ref<Project[]>([]);
+
+// Получить первую фотку
+const getFirstProjectImage = (project: Project): string | undefined => {
+  if (!project?.photos?.length) return undefined;
   return `https://api.los-bio.ru/files/projects/${project.photos[0].name}`;
 };
 
-const getShortDescription = (project) => {
+// Обрезать описание
+const getShortDescription = (project: Project): string => {
   return (
     project.short_description?.blocks?.[0]?.data?.text || project.works || ""
   );
 };
 
-const handleImageError = (e) => {
-  e.target.style.display = "none";
-  const wrapper = e.target.parentElement;
-  const placeholder = document.createElement("div");
-  placeholder.className = "project-image-placeholder";
-  placeholder.innerHTML = `
-    <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <path d="M4 16L8.5 10.5L11 14L14.5 9L20 16M4 16H20M4 16V4H20V16" stroke="#555" stroke-width="2"/>
-    </svg>
-  `;
-  wrapper.appendChild(placeholder);
+// Ошибка при загрузке картинки
+const handleImageError = (e: Event) => {
+  const target = e.target as HTMLImageElement;
+  if (!target) return;
+
+  target.style.display = "none";
+
+  const wrapper = target.parentElement;
+  if (wrapper) {
+    const placeholder = document.createElement("div");
+    placeholder.className = "project-image-placeholder";
+    placeholder.innerHTML = `
+      <svg width="50" height="50" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M4 16L8.5 10.5L11 14L14.5 9L20 16M4 16H20M4 16V4H20V16" stroke="#555" stroke-width="2"/>
+      </svg>
+    `;
+    wrapper.appendChild(placeholder);
+  }
 };
 
+// Перейти на проект
 const goToProject = (slug: string) => {
   router.push(`/projects/${slug}`);
-};
-
-const goToAllProjects = () => {
-  router.push("/projects");
 };
 
 onMounted(async () => {
@@ -327,7 +358,6 @@ onMounted(async () => {
   .project-card {
     height: auto;
     max-width: 300px;
-    margin-left: -120px;
   }
 
   .project-description {

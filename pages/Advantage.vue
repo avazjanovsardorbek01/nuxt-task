@@ -147,7 +147,7 @@ if (!error.value && Array.isArray(data.value)) {
 .advantages-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 40px;
+  gap: 90px;
   justify-items: center;
 }
 
@@ -282,7 +282,6 @@ if (!error.value && Array.isArray(data.value)) {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin-left: -40px;
     padding: 30px 20px;
     max-width: auto;
   }
