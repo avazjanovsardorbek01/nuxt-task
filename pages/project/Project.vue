@@ -3,7 +3,7 @@
     <div class="container">
       <div class="projects-header">
         <h2 class="section-title">Наши проекты</h2>
-        <NuxtLink to="/all-projects" class="view-all-button">
+        <NuxtLink to="/all-projects/all-projects" class="view-all-button">
           Смотреть все
         </NuxtLink>
       </div>

@@ -1,7 +1,6 @@
 <template>
   <div class="container">
     <div class="app">
-      <Navbar />
       <div class="main-content">
         <div class="container">
           <ClientOnly>
@@ -17,7 +16,6 @@
           </ClientOnly>
         </div>
       </div>
-      <Footer />
     </div>
   </div>
 </template>
