@@ -53,7 +53,7 @@
 <style lang="scss" scoped>
 .app-navbar {
   width: 100%;
-  font-family: sans-serif;
+  font-family: "Gilroy-Light";
   font-weight: 100;
 }
 

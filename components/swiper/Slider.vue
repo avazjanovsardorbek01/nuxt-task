@@ -20,7 +20,7 @@
               }"
             >
               <h2>{{ slide.title }}</h2>
-              <p>{{ slide.description }}</p>
+              <p class="slide-desc">{{ slide.description }}</p>
               <NuxtLink to="/catalog" class="catalog-btn">
                 Перейти в каталог
               </NuxtLink>
@@ -148,7 +148,7 @@ const onSlideChange = (swiper: any) => {
 
 .text-container h2 {
   font-size: 2.8rem;
-  font-weight: 700;
+  font-weight: 500;
   margin-bottom: 30px;
   line-height: 1.3;
   text-transform: uppercase;
@@ -189,6 +189,10 @@ const onSlideChange = (swiper: any) => {
   transform: scale(1.03);
 }
 
+.slide-desc {
+  font-family: "Gilroy-Light";
+}
+
 .catalog-btn {
   display: inline-block;
   background-color: #007bff;
@@ -196,7 +200,8 @@ const onSlideChange = (swiper: any) => {
   padding: 16px 40px;
   text-decoration: none;
   border-radius: 6px;
-  font-weight: bold;
+  font-family: "Gilroy-Light";
+
   font-size: 1.2rem;
   transition: all 0.3s ease;
   box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
