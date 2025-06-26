@@ -53,26 +53,19 @@
 <style lang="scss" scoped>
 .app-navbar {
   width: 100%;
-  font-family: "Gilroy";
+  font-family: sans-serif;
   font-weight: 100;
-}
-
-body {
-  margin: 0;
-  background-color: #000214;
-  color: white;
-}
-
-.container {
-  max-width: 1200px;
-  margin: auto;
-  padding: 10px 20px;
 }
 
 .top-bar {
   background-color: #01021e;
-  font-size: 14px;
-  padding: 10px 0;
+  width: 100%;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
 
 .contact-info {
@@ -81,6 +74,7 @@ body {
   gap: 20px;
   align-items: center;
   justify-content: space-between;
+  padding: 10px 0;
 
   span,
   a {
@@ -105,13 +99,14 @@ body {
 
 .main-nav {
   background-color: #02041f;
-  padding: 15px 0;
+  width: 100%;
 }
 
 .nav-content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 15px 0;
 }
 
 .logo img {
@@ -148,6 +143,29 @@ body {
 
   &:hover {
     background-color: #0056b3;
+  }
+}
+
+@media (max-width: 768px) {
+  .contact-info {
+    gap: 15px;
+    font-size: 12px;
+  }
+
+  .nav-links {
+    gap: 15px;
+  }
+}
+
+@media (max-width: 576px) {
+  .nav-content {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 }
 </style>
