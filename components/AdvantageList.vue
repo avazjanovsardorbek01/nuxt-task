@@ -210,6 +210,7 @@ if (!error.value && Array.isArray(data.value)) {
 }
 
 .advantage-text {
+  font-family: "Gilroy-Light";
   font-size: 1.1rem;
   line-height: 1.6;
   color: #ccc;
