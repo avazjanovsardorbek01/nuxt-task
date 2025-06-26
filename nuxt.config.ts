@@ -4,7 +4,6 @@ export default defineNuxtConfig({
   modules: ["@nuxt/image"],
 
   image: {
-    // Здесь добавляем разрешённые домены (если используешь внешние картинки)
     domains: ["i.ibb.co", "api.los-bio.ru", "los-bio.ru"],
   },
 

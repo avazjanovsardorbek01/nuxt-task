@@ -1,75 +1,81 @@
-# Nuxt Minimal Starter
+# Nuxt 3 — Одностраничное приложение с SSR
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+Данный проект представляет собой одностраничное приложение (SPA) с серверным рендерингом (SSR), реализованное с использованием Nuxt 3 и Vue 3. В приложении предусмотрены секции со слайдером, блоками преимуществ и проектами, данные для которых загружаются с внешнего API.
 
-## Setup
+## Стек технологий
 
-Make sure to install dependencies:
+Проект разработан с использованием следующих технологий:
 
-```bash
-# npm
+- Nuxt 3 с серверным рендерингом (SSR)
+- Vue 3 (Composition API)
+- TypeScript
+- SCSS
+- Методология БЭМ для именования классов
+- Swiper.js для реализации слайдера
+- Animate.css для анимаций
+- API: [https://api.los-bio.ru](https://api.los-bio.ru)
+
+## Установка и запуск
+
+Установите зависимости:
+
+```
 npm install
-
-# pnpm
-pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+Для запуска в режиме разработки:
 
-Start the development server on `http://localhost:3000`:
-
-```bash
-# npm
+```
 npm run dev
-
-# pnpm
-pnpm dev
-
-# yarn
-yarn dev
-
-# bun
-bun run dev
 ```
 
-## Production
+Приложение будет доступно по адресу [http://localhost:3000](http://localhost:3000)
 
-Build the application for production:
+Для сборки проекта в продакшен:
 
-```bash
-# npm
+```
 npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
 ```
 
-Locally preview production build:
+Для локального предпросмотра продакшен-сборки:
 
-```bash
-# npm
+```
 npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
 ```
 
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
+## Структура проекта
+
+- `components/` — общие компоненты, такие как навигация и подвал
+- `pages/` — страницы, содержащие основное содержимое
+- `public/` — статические ресурсы (иконки, изображения)
+- `assets/` — глобальные SCSS-стили
+- `nuxt.config.ts` — конфигурационный файл проекта
+
+## Функциональность
+
+- Слайдер с анимацией, получающий данные из API
+- Блок преимуществ с анимированным появлением элементов
+- Секция проектов с динамической подгрузкой по API
+- Поддержка SSR и базовой SEO-оптимизации
+
+## Особенности
+
+- Используется серверный рендеринг для повышения производительности
+- Применяется строгая типизация на TypeScript
+- В проекте не использовались Pug и папка `composables/`, так как в рамках задачи они не требовались
+
+## Время разработки
+
+Фактически затраченное рабочее время составило 12–14 часов.
+
+## Репозиторий
+
+Ссылка на GitHub: [https://github.com/avazjanovsardorbek01/nuxt-task](https://github.com/avazjanovsardorbek01/nuxt-task)
+Приглашение отправлено на аккаунт: `mrcodewin`
+
+## Развёртывание
+
+Для публикации проекта на продакшене рекомендуется ознакомиться с официальной документацией Nuxt:
+[https://nuxt.com/docs/getting-started/deployment](https://nuxt.com/docs/getting-started/deployment)
+
+---

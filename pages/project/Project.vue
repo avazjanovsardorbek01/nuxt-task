@@ -1,5 +1,5 @@
 <template>
-  <section class="projects-section" id="">
+  <section class="projects-section" id="projects">
     <div class="container">
       <div class="projects-header">
         <h2 class="section-title">Наши проекты</h2>

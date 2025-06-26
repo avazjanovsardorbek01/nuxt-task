@@ -3,9 +3,9 @@
     <div class="container">
       <!-- Breadcrumbs -->
       <div class="breadcrumbs">
-        <router-link to="/">Главная</router-link>
+        <NuxtLink to="/">Главная</NuxtLink>
         <span class="separator">/</span>
-        <router-link to="/projects">Проекты</router-link>
+        <NuxtLink to="/">Проекты</NuxtLink>
         <span class="separator">/</span>
         <span class="current">{{ project.title }}</span>
       </div>

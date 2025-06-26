@@ -14,7 +14,7 @@
         <ul class="footer-list">
           <li><NuxtLink to="/">Главная</NuxtLink></li>
           <li><NuxtLink to="/about">О компании</NuxtLink></li>
-          <li><NuxtLink to="/projects">Проекты</NuxtLink></li>
+          <li><NuxtLink to="/#projects">Проекты</NuxtLink></li>
           <li><NuxtLink to="/catalog">Каталог</NuxtLink></li>
           <li><NuxtLink to="/contacts">Контакты</NuxtLink></li>
         </ul>

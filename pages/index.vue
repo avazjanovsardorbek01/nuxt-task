@@ -23,11 +23,11 @@
 </template>
 
 <script setup>
-import Navbar from "../components/common/app-navbar.vue";
+import Navbar from "../components/app-navbar.vue";
 import Slider from "../pages/swiper/Slider.vue";
-import AdvantageList from "./Advantage.vue";
-import ProjectList from "./Project.vue"; // ✅ Обновлённое имя
-import Footer from "../components/common/app-footer.vue";
+import AdvantageList from "./advantage/Advantage.vue";
+import ProjectList from "./project/Project.vue";
+import Footer from "../components/app-footer.vue";
 </script>
 
 <style>
@@ -39,20 +39,12 @@ body {
   font-family: "Gilroy", sans-serif;
 }
 
-/* .app {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-}
-
-.main-content {
-  flex: 1;
-} */
-
 .container {
   max-width: 1300px;
   margin: 0 auto;
   padding: 0 20px;
-  /* width: auto; */
+}
+html {
+  scroll-behavior: smooth;
 }
 </style>
