@@ -35,18 +35,40 @@ onMounted(async () => {
     const { data, error } = await useFetch(
       "https://api.los-bio.ru/info/group/advantage"
     );
-    if (error.value || !Array.isArray(data.value)) throw error.value;
-    advantages.value = data.value.map((item: any) => {
-      const p = JSON.parse(item.value);
-      return {
-        title: p.title,
-        description: p.description,
-        icon:
-          p.icon?.[0] &&
-          `https://api.los-bio.ru/files/${p.icon[0].catalog}/${p.icon[0].name}`,
-      };
+
+    console.log("API Response:", data.value);
+    if (error.value) {
+      console.error("Fetch Error:", error.value);
+      throw error.value;
+    }
+
+    if (!Array.isArray(data.value)) {
+      console.error("Data is not array:", data.value);
+      throw new Error("Invalid data");
+    }
+
+    advantages.value = data.value.map((item: any, index: number) => {
+      try {
+        const p = JSON.parse(item.value);
+        console.log(`Parsed item ${index}:`, p);
+
+        return {
+          title: p.title || "Без названия",
+          description: p.description || "Без описания",
+          icon: p.icon?.[0]
+            ? `https://api.los-bio.ru/files/${p.icon[0].catalog}/${p.icon[0].name}`
+            : undefined,
+        };
+      } catch (parseErr) {
+        console.error("Ошибка парсинга JSON:", item.value);
+        return {
+          title: "Ошибка данных",
+          description: "Не удалось распарсить",
+        };
+      }
     });
-  } catch {
+  } catch (err) {
+    console.error("Catch Error:", err);
     advantages.value = [
       { title: "Оперативность расчётов", description: "…" },
       { title: "Большой опыт", description: "…" },
