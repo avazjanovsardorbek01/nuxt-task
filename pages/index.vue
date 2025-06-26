@@ -1,25 +1,34 @@
 <template>
   <div class="app">
-    <AppNavbar />
+    <Navbar />
     <div class="main-content">
       <div class="container">
         <ClientOnly>
           <Slider />
         </ClientOnly>
-        <AdvantageList />
+
+        <ClientOnly>
+          <AdvantageList />
+        </ClientOnly>
+
+        <ClientOnly>
+          <ProjectList />
+        </ClientOnly>
       </div>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script setup>
-import AppNavbar from "../components/common/app-navbar.vue";
-import Slider from "~/components/swiper/Slider.vue";
-import AdvantageList from "../components/AdvantageList.vue";
+import Navbar from "../components/common/app-navbar.vue";
+import Slider from "../pages/swiper/Slider.vue";
+import AdvantageList from "./Advantage.vue";
+import ProjectList from "./Project.vue"; // ✅ Обновлённое имя
+import Footer from "../components/common/app-footer.vue";
 </script>
 
 <style>
-/* Глобальные стили */
 body {
   margin: 0;
   padding: 0;
@@ -38,7 +47,6 @@ body {
   flex: 1;
 }
 
-/* ✅ Контейнер для центрирования и ограничения ширины */
 .container {
   max-width: 1300px;
   margin: 0 auto;
