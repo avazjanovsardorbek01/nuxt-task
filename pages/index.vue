@@ -2,10 +2,12 @@
   <div class="app">
     <AppNavbar />
     <div class="main-content">
-      <ClientOnly>
-        <Slider />
-      </ClientOnly>
-      <AdvantageList />
+      <div class="container">
+        <ClientOnly>
+          <Slider />
+        </ClientOnly>
+        <AdvantageList />
+      </div>
     </div>
   </div>
 </template>
@@ -34,5 +36,13 @@ body {
 
 .main-content {
   flex: 1;
+}
+
+/* ✅ Контейнер для центрирования и ограничения ширины */
+.container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 30px;
+  width: 100%;
 }
 </style>
